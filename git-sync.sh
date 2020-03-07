@@ -5,7 +5,7 @@ set -e
 SOURCE_REPO=$1
 SOURCE_BRANCH=$2
 GLITCH_TOKEN=$5
-DESTINATION_REPO="https://${GLITCH_TOKEN}@api.glitch.com/git/witty-silk-thief"
+DESTINATION_REPO="https://api.glitch.com/git/witty-silk-thief"
 DESTINATION_BRANCH=$4
 
 if ! echo $SOURCE_REPO | grep '.git'
@@ -33,6 +33,7 @@ echo "SOURCE=$SOURCE_REPO:$SOURCE_BRANCH"
 echo "DESTINATION=$DESTINATION_REPO:$DESTINATION_BRANCH"
 echo "HELLO"
 
+git config --global user.name ${GLITCH_TOKEN}
 git clone "$SOURCE_REPO" --origin source && cd `basename "$SOURCE_REPO" .git`
 git remote add destination "$DESTINATION_REPO"
 git push destination "${SOURCE_BRANCH}:${DESTINATION_BRANCH}" -f
