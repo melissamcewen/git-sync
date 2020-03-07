@@ -4,7 +4,8 @@ set -e
 
 SOURCE_REPO=$1
 SOURCE_BRANCH=$2
-DESTINATION_REPO=$3
+GLITCH_TOKEN=$5
+DESTINATION_REPO="https://${GLITCH_TOKEN}@api.glitch.com/git/witty-silk-thief"
 DESTINATION_BRANCH=$4
 
 if ! echo $SOURCE_REPO | grep '.git'
